@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="800.0" prefWidth="600.0"
+            style="-fx-background-color: #0C0A14;"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.proj.SeatMapController">
+
+    <!-- ══ Header ══════════════════════════════════════════════ -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="10"
+              style="-fx-background-color: #191426; -fx-border-color: #26415E; -fx-border-width: 0 0 1 0;">
+            <padding>
+                <Insets bottom="12" left="18" right="18" top="12"/>
+            </padding>
+
+            <Button text="← Back" onAction="#goBack"
+                    style="-fx-background-color: transparent; -fx-text-fill: #f2cde8;
+                           -fx-border-color: #f2cde8; -fx-border-radius: 6;
+                           -fx-background-radius: 6;">
+                <font>
+                    <Font name="System Bold" size="13"/>
+                </font>
+                <cursor>
+                    <Cursor fx:constant="HAND"/>
+                </cursor>
+            </Button>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <VBox spacing="2" alignment="CENTER_RIGHT">
+                <Label fx:id="titleLbl" text="Movie Title"
+                       style="-fx-text-fill: #DCD7EB; -fx-font-size: 16; -fx-font-weight: bold;"/>
+
+                <Label fx:id="subLbl" text="Screen · Time · User"
+                       style="-fx-text-fill: #78706E; -fx-font-size: 11;"/>
+            </VBox>
+        </HBox>
+    </top>
+
+    <!-- ══ Seat Area ══════════════════════════════════════════════ -->
+    <center>
+        <ScrollPane fx:id="scrollPane" fitToWidth="true"
+                    style="-fx-background: #0C0A14; -fx-background-color: #0C0A14;
+                           -fx-border-color: transparent;">
+
+            <StackPane fx:id="canvasHolder"
+                       style="-fx-background-color: #0C0A14;">
+                <padding>
+                    <Insets top="10" bottom="10"/>
+                </padding>
+            </StackPane>
+
+        </ScrollPane>
+    </center>
+
+    <!-- ══ Bottom Panel ════════════════════════════════════════ -->
+    <bottom>
+        <VBox spacing="8"
+              style="-fx-background-color: #191426;
+                     -fx-border-color: #26415E;
+                     -fx-border-width: 1 0 0 0;">
+            <padding>
+                <Insets bottom="14" left="18" right="18" top="10"/>
+            </padding>
+
+            <!-- Legend -->
+            <HBox fx:id="legendBox" alignment="CENTER" spacing="14"/>
+
+            <!-- Status -->
+            <Label fx:id="statusLbl" text="Click a seat to select"
+                   maxWidth="Infinity" alignment="CENTER"
+                   style="-fx-text-fill: #78706E; -fx-font-size: 12;"/>
+
+            <!-- Summary -->
+            <HBox alignment="CENTER_LEFT">
+                <Label fx:id="selCountLbl" text="0 seats selected"
+                       style="-fx-text-fill: #78706E; -fx-font-size: 12;"/>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <Label fx:id="selPriceLbl" text="0.00"
+                       style="-fx-text-fill: #FFC83C; -fx-font-size: 22; -fx-font-weight: bold;"/>
+            </HBox>
+
+            <!-- Buttons -->
+            <HBox alignment="CENTER" spacing="10">
+
+                <Button fx:id="bookBtn" text="✔  Confirm Booking"
+                        prefWidth="180" prefHeight="38"
+                        style="-fx-background-color: #32A05A;
+                               -fx-text-fill: white;
+                               -fx-font-weight: bold;
+                               -fx-font-size: 13;
+                               -fx-background-radius: 10;">
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                </Button>
+
+                <Button fx:id="cancelBtn" text="✖  Cancel Selection"
+                        prefWidth="160" prefHeight="38"
+                        style="-fx-background-color: #A03232;
+                               -fx-text-fill: white;
+                               -fx-font-weight: bold;
+                               -fx-font-size: 13;
+                               -fx-background-radius: 10;">
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                </Button>
+
+            </HBox>
+
+            <!-- Counter -->
+            <Label fx:id="totalLbl" text="Booked: 0 / 100"
+                   maxWidth="Infinity" alignment="CENTER"
+                   style="-fx-text-fill: #FFC83C; -fx-font-size: 13; -fx-font-weight: bold;"/>
+        </VBox>
+    </bottom>
+
+</BorderPane>

@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="800.0" prefWidth="600.0" style="-fx-background-color: #0d1b2a;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proj.AdminController">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" prefHeight="70.0" style="-fx-background-color: #1a304a;" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets bottom="8.0" left="30.0" right="30.0" top="8.0" />
+            </padding>
+            <children>
+                <ImageView fitHeight="96.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../images/logo.png" />
+                    </image>
+                </ImageView>
+                <Label prefHeight="26.0" prefWidth="342.0" text="SOLARIS CINEMA | ADMIN PANEL" textFill="#f2cde8">
+                    <font>
+                        <Font name="Bell MT Bold" size="20.0" />
+                    </font>
+                </Label>
+            </children>
+        </HBox>
+    </top>
+
+    <left>
+        <VBox prefHeight="705.0" prefWidth="126.0" spacing="15.0" style="-fx-background-color: #112236;" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="30.0" />
+            </padding>
+            <children>
+                <Button fx:id="viewaddmovieBTN" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onviewaddmovieBTNclick" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: transparent; -fx-border-color: #d18bb9; -fx-border-radius: 10; -fx-text-fill: #d18bb9;" text="Add Movie">
+                    <font><Font name="System Bold" size="14.0" /></font>
+                    <cursor><Cursor fx:constant="HAND" /></cursor>
+                </Button>
+                <Button fx:id="reportsBTN" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                        mnemonicParsing="false" onAction="#onReportsBTNclick"
+                        prefHeight="50.0" prefWidth="120.0"
+                        style="-fx-background-color: transparent; -fx-border-color: #d18bb9;
+                        -fx-border-radius: 10; -fx-text-fill: #d18bb9;"
+                        text="Sales &amp; Reports">
+                    <font><Font name="System Bold" size="13.0"/></font>
+                    <cursor><Cursor fx:constant="HAND"/></cursor>
+                </Button>
+                <Button fx:id="addshowBTN" layoutX="30.0" layoutY="40.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onAddShowBTNclick" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: transparent; -fx-border-color: #d18bb9; -fx-border-radius: 10; -fx-text-fill: #d18bb9;" text="Add Show">
+                    <font><Font name="System Bold" size="14.0" /></font>
+                    <cursor><Cursor fx:constant="HAND" /></cursor>
+                </Button>
+                <Button fx:id="viewMoviesBTN" layoutX="30.0" layoutY="106.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onviewMoviesBTNclick" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #d18bb9; -fx-background-radius: 10;" text="View Movies" textFill="#112236">
+                    <font><Font name="System Bold" size="14.0" /></font>
+                    <cursor><Cursor fx:constant="HAND" /></cursor>
+                </Button>
+                <Button fx:id="screensBTN" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onScreensBTNclick" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: transparent; -fx-border-color: #d18bb9; -fx-border-radius: 10; -fx-text-fill: #d18bb9;" text="Screens">
+                    <font><Font name="System Bold" size="14.0" /></font>
+                    <cursor><Cursor fx:constant="HAND" /></cursor>
+                </Button>
+                <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="122.0" VBox.vgrow="ALWAYS" />
+                <Button fx:id="logoutBTN" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onLogoutBTNclick" prefHeight="35.0" prefWidth="106.0" style="-fx-background-color: #a84242; -fx-background-radius: 10;" text="LOGOUT" textFill="WHITE">
+                    <font><Font name="System Bold" size="13.0" /></font>
+                    <cursor><Cursor fx:constant="HAND" /></cursor>
+                </Button>
+            </children>
+        </VBox>
+    </left>
+
+    <center>
+        <StackPane BorderPane.alignment="CENTER">
+            <children>
+
+                <ScrollPane fx:id="addmovieScrollPane" fitToWidth="true" style="-fx-background: #0d1b2a; -fx-background-color: transparent;">
+                    <content>
+                        <HBox>
+                            <padding>
+                                <Insets bottom="40.0" left="60.0" right="40.0" top="40.0" />
+                            </padding>
+                            <children>
+                                <VBox fx:id="addmovieVBox" maxWidth="400.0" minHeight="-Infinity" prefHeight="620.0" prefWidth="400.0" spacing="20.0" style="-fx-background-color: #1a304a; -fx-background-radius: 20; -fx-border-color: rgba(255,255,255,0.1); -fx-border-radius: 20; -fx-border-width: 2;">
+                                    <padding>
+                                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                    </padding>
+                                    <children>
+                                        <Label text="ADD NEW MOVIE" textFill="#f2cde8">
+                                            <font><Font name="System Bold" size="22.0" /></font>
+                                            <VBox.margin><Insets bottom="10.0" /></VBox.margin>
+                                        </Label>
+
+                                        <HBox spacing="20.0">
+                                            <children>
+                                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                    <Label text="Movie Title" textFill="#e3cdd8" />
+                                                    <TextField fx:id="titleTF" promptText="Enter title" style="-fx-background-color: #e3cdd8; -fx-background-radius: 10; -fx-padding: 8;" />
+                                                </VBox>
+                                                <VBox minWidth="150.0" spacing="5.0" HBox.hgrow="SOMETIMES">
+                                                    <Label text="Duration (mins)" textFill="#e3cdd8" />
+                                                    <TextField fx:id="durationTF" promptText="e.g. 120" style="-fx-background-color: #e3cdd8; -fx-background-radius: 10; -fx-padding: 8;" />
+                                                </VBox>
+                                            </children>
+                                        </HBox>
+
+                                        <HBox spacing="20.0">
+                                            <children>
+                                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                    <Label text="Genres (Hold Ctrl to select multiple)" textFill="#e3cdd8" />
+                                                    <ListView fx:id="genreLV" maxHeight="-Infinity" minHeight="100.0" prefHeight="100.0" style="-fx-background-color: #e3cdd8; -fx-background-radius: 10;" />
+                                                </VBox>
+                                            </children>
+                                        </HBox>
+
+                                        <HBox spacing="20.0">
+                                            <children>
+                                                <VBox spacing="5.0">
+                                                    <Label text="Rating (0.0 - 10.0)" textFill="#e3cdd8" />
+                                                    <TextField fx:id="ratingTF" prefHeight="34.0" prefWidth="122.0" promptText="e.g. 8.5" style="-fx-background-color: #e3cdd8; -fx-background-radius: 10; -fx-padding: 8;" />
+                                                </VBox>
+                                                <VBox spacing="5.0">
+                                                    <Label text="Poster URL" textFill="#e3cdd8" />
+                                                    <TextField fx:id="posterTF" maxWidth="220.0" prefWidth="200.0" promptText="https://..." style="-fx-background-color: #e3cdd8; -fx-background-radius: 10; -fx-padding: 8;" />
+                                                </VBox>
+                                            </children>
+                                        </HBox>
+
+                                        <VBox spacing="5.0">
+                                            <Label text="Description" textFill="#e3cdd8" />
+                                            <TextArea fx:id="descTA" prefRowCount="5" promptText="Brief movie summary..." style="-fx-control-inner-background: #e3cdd8; -fx-background-radius: 20; -fx-border-radius: 20;" wrapText="true" />
+                                        </VBox>
+
+                                        <Button fx:id="addmovieBTN" maxWidth="Infinity" mnemonicParsing="false" onAction="#onAddmovieBTNclick" prefHeight="45.0" style="-fx-background-color: #d18bb9; -fx-background-radius: 20;" text="SAVE MOVIE" textFill="WHITE">
+                                            <font><Font name="System Bold" size="14.0" /></font>
+                                            <VBox.margin><Insets top="15.0" /></VBox.margin>
+                                            <cursor><Cursor fx:constant="HAND" /></cursor>
+                                        </Button>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
+                    </content>
+                </ScrollPane>
+
+                <ScrollPane fx:id="moviesScrollPane" fitToWidth="true" managed="false" style="-fx-background: #0d1b2a; -fx-background-color: transparent;" visible="false">
+                    <content>
+                        <FlowPane fx:id="moviesFlowPane" alignment="TOP_LEFT" hgap="15.0" vgap="25.0">
+                            <padding>
+                                <Insets bottom="30.0" left="15.0" right="15.0" top="30.0" />
+                            </padding>
+                        </FlowPane>
+                    </content>
+                </ScrollPane>
+
+                <ScrollPane fx:id="screensScrollPane" fitToWidth="true" managed="false" style="-fx-background: #0d1b2a; -fx-background-color: transparent;" visible="false">
+                    <content>
+                        <VBox fx:id="screensVBox" spacing="20.0">
+                            <padding>
+                                <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                            </padding>
+                            <children>
+                                <Label text="SCREENS" textFill="#f2cde8">
+                                    <font><Font name="System Bold" size="22.0" /></font>
+                                </Label>
+                                <FlowPane fx:id="screensContainer" hgap="20.0" vgap="20.0" />
+                            </children>
+                        </VBox>
+                    </content>
+                </ScrollPane>
+
+                <ScrollPane fx:id="addShowScrollPane" fitToWidth="true" managed="false" style="-fx-background: #0d1b2a; -fx-background-color: transparent;" visible="false">
+                    <content>
+                        <HBox>
+                            <padding>
+                                <Insets bottom="40.0" left="60.0" right="40.0" top="40.0" />
+                            </padding>
+                            <children>
+                                <VBox fx:id="addShowVBox" maxWidth="400.0" minHeight="-Infinity" prefHeight="620.0" prefWidth="400.0" spacing="20.0" style="-fx-background-color: #1a304a; -fx-background-radius: 20; -fx-border-color: rgba(255,255,255,0.1); -fx-border-radius: 20; -fx-border-width: 2;">
+                                    <padding>
+                                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                    </padding>
+                                    <children>
+                                        <Label text="ADD NEW SHOW" textFill="#f2cde8">
+                                            <font><Font name="System Bold" size="22.0" /></font>
+                                            <VBox.margin><Insets bottom="10.0" /></VBox.margin>
+                                        </Label>
+
+                                        <VBox spacing="5.0">
+                                            <Label text="Movie" textFill="#e3cdd8" />
+                                            <ComboBox fx:id="movieCB" maxWidth="Infinity" prefHeight="38.0" promptText="Select a movie" style="-fx-background-color: #e3cdd8; -fx-background-radius: 10;" />
+                                        </VBox>
+
+                                        <VBox spacing="5.0">
+                                            <Label text="Screen" textFill="#e3cdd8" />
+                                            <ComboBox fx:id="screenCB" maxWidth="Infinity" prefHeight="38.0" promptText="Select a screen" style="-fx-background-color: #e3cdd8; -fx-background-radius: 10;" />
+                                        </VBox>
+
+                                        <VBox spacing="5.0">
+                                            <Label text="Show Date" textFill="#e3cdd8" />
+                                            <DatePicker fx:id="showDateDP" maxWidth="Infinity" prefHeight="38.0" style="-fx-background-color: #e3cdd8; -fx-background-radius: 10;" />
+                                        </VBox>
+
+                                        <VBox spacing="5.0">
+                                            <Label text="Start Time (HH:MM)" textFill="#e3cdd8" />
+                                            <TextField fx:id="startTimeTF" promptText="e.g. 19:30" style="-fx-background-color: #e3cdd8; -fx-background-radius: 10; -fx-padding: 8;" />
+                                        </VBox>
+
+                                        <VBox spacing="5.0">
+                                            <Label text="Ticket Price ($)" textFill="#e3cdd8" />
+                                            <TextField fx:id="ticketPriceTF" promptText="e.g. 12.50" style="-fx-background-color: #e3cdd8; -fx-background-radius: 10; -fx-padding: 8;" />
+                                        </VBox>
+
+                                        <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#onSaveShowBTNclick" prefHeight="45.0" style="-fx-background-color: #d18bb9; -fx-background-radius: 20;" text="SAVE SHOW" textFill="WHITE">
+                                            <font><Font name="System Bold" size="14.0" /></font>
+                                            <VBox.margin><Insets top="15.0" /></VBox.margin>
+                                            <cursor><Cursor fx:constant="HAND" /></cursor>
+                                        </Button>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
+                    </content>
+                </ScrollPane>
+
+                <ScrollPane fx:id="screenMoviesScrollPane" fitToWidth="true" managed="false" style="-fx-background: #0d1b2a; -fx-background-color: transparent;" visible="false">
+                    <content>
+                        <VBox fx:id="screenMoviesVBox" spacing="20.0">
+                            <padding>
+                                <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                            </padding>
+                            <children>
+                                <Label fx:id="screenMoviesTitleLbl" text="Screen Movies" textFill="#f2cde8">
+                                    <font><Font name="System Bold" size="22.0" /></font>
+                                </Label>
+                                <FlowPane fx:id="screenMoviesFlowPane" hgap="20.0" vgap="20.0" />
+                            </children>
+                        </VBox>
+                    </content>
+                </ScrollPane>
+
+            </children>
+        </StackPane>
+    </center>
+
+</BorderPane>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proj.LoginController">
+    <children>
+        <ImageView fx:id="backgroundImage" fitHeight="800.0" fitWidth="600.0" pickOnBounds="true">
+            <image>
+                <Image url="@../../../images/bg_login.png" />
+            </image>
+        </ImageView>
+
+        <VBox alignment="CENTER" maxHeight="520.0" maxWidth="380.0" prefHeight="520.0" prefWidth="380.0" spacing="20.0" style="-fx-background-color: #1a304a; -fx-background-radius: 24; -fx-border-radius: 24; -fx-border-color: rgba(255,255,255,0.15); -fx-border-width: 1.5;">
+            <padding>
+                <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+            </padding>
+            <children>
+                <HBox alignment="CENTER" spacing="12.0">
+                    <children>
+                        <ImageView fitHeight="102.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../images/logo.png" />
+                            </image>
+                        </ImageView>
+                        <Label text="SOLARIS CINEMA" textFill="#f2cde8">
+                            <font>
+                                <Font name="Bell MT Bold" size="22.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+
+                <Label text="LOGIN" textFill="#f2cde8">
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Label>
+
+                <VBox spacing="4.0">
+                    <children>
+                        <Label text="Username" textFill="#e3cdd8" />
+                        <TextField fx:id="userTF" promptText="Enter Your Username" style="-fx-background-color: #e3cdd8; -fx-background-radius: 12;">
+                            <font>
+                                <Font size="12.0" />
+                            </font>
+                        </TextField>
+                    </children>
+                </VBox>
+
+                <VBox spacing="4.0">
+                    <children>
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <children>
+                                <Label text="Password" textFill="#e3cdd8" />
+                                <HBox prefHeight="37.0" prefWidth="154.0" />
+                                <Hyperlink fx:id="showPassHL" onAction="#togglePassword" style="-fx-underline: false;" text="Show Password" textFill="#adcdef">
+                                    <font>
+                                        <Font size="12.0" />
+                                    </font>
+                                </Hyperlink>
+                            </children>
+                        </HBox>
+
+                        <StackPane>
+                            <children>
+                                <PasswordField fx:id="passTF" promptText="••••••••" style="-fx-background-color: #e3cdd8; -fx-background-radius: 15;" />
+
+                                <TextField fx:id="passVisibleTF" style="-fx-background-color: #e3cdd8; -fx-background-radius: 15;" visible="false" />
+                            </children>
+                        </StackPane>
+                    </children>
+                </VBox>
+
+                <Button fx:id="loginBTN" mnemonicParsing="false" onAction="#onloginBTNClick" prefHeight="38.0" prefWidth="330.0" style="-fx-background-color: #d18bb9; -fx-background-radius: 20;" text="LOG IN" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="13.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets top="8.0" />
+                    </VBox.margin>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+                <HBox alignment="CENTER" layoutX="36.0" layoutY="440.0" prefWidth="327.0" spacing="4.0">
+                    <children>
+                        <Label text="Don't have account?" textFill="#e3cdd8">
+                            <font>
+                                <Font size="13.0" />
+                            </font>
+                        </Label>
+                        <Hyperlink fx:id="signupHL" onAction="#handleSignupLink" text="Sign Up" textFill="#adcfef">
+                            <font>
+                                <Font size="13.0" />
+                            </font>
+                        </Hyperlink>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</StackPane>

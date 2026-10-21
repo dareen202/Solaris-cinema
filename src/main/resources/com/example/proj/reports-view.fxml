@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.Cursor?>
+
+<BorderPane prefWidth="600.0" prefHeight="720.0"
+            style="-fx-background-color:#0d1b2a;"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.proj.ReportsController">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" prefHeight="70.0"
+              style="-fx-background-color:#1a304a;" BorderPane.alignment="CENTER">
+            <padding><Insets bottom="8.0" left="30.0" right="30.0" top="8.0"/></padding>
+            <Label text="SOLARIS CINEMA | SALES &amp; REPORTS" textFill="#f2cde8">
+                <font><Font name="Bell MT Bold" size="20.0"/></font>
+            </Label>
+        </HBox>
+    </top>
+
+    <left>
+        <VBox prefWidth="130.0" spacing="12.0"
+              style="-fx-background-color:#112236;" BorderPane.alignment="CENTER">
+            <padding><Insets bottom="20.0" left="12.0" right="12.0" top="30.0"/></padding>
+
+            <Button fx:id="btnOverview" text="Overview"
+                    maxWidth="Infinity" prefHeight="50.0"
+                    onAction="#onOverview"
+                    style="-fx-background-color:#d18bb9; -fx-background-radius:10; -fx-text-fill:#112236; -fx-cursor:hand;">
+                <font><Font name="System Bold" size="13.0"/></font>
+                <cursor><Cursor fx:constant="HAND"/></cursor>
+            </Button>
+
+            <Button fx:id="btnPerMovie" text="Per Movie"
+                    maxWidth="Infinity" prefHeight="50.0"
+                    onAction="#onPerMovie"
+                    style="-fx-background-color:transparent; -fx-border-color:#d18bb9; -fx-border-radius:10; -fx-text-fill:#d18bb9; -fx-cursor:hand;">
+                <font><Font name="System Bold" size="13.0"/></font>
+                <cursor><Cursor fx:constant="HAND"/></cursor>
+            </Button>
+
+            <Button fx:id="btnDaily" text="Daily Sales"
+                    maxWidth="Infinity" prefHeight="50.0"
+                    onAction="#onDaily"
+                    style="-fx-background-color:transparent; -fx-border-color:#d18bb9; -fx-border-radius:10; -fx-text-fill:#d18bb9; -fx-cursor:hand;">
+                <font><Font name="System Bold" size="13.0"/></font>
+                <cursor><Cursor fx:constant="HAND"/></cursor>
+            </Button>
+
+            <Button fx:id="btnPrice" text="Ticket Prices"
+                    maxWidth="Infinity" prefHeight="50.0"
+                    onAction="#onPrice"
+                    style="-fx-background-color:transparent; -fx-border-color:#d18bb9; -fx-border-radius:10; -fx-text-fill:#d18bb9; -fx-cursor:hand;">
+                <font><Font name="System Bold" size="13.0"/></font>
+                <cursor><Cursor fx:constant="HAND"/></cursor>
+            </Button>
+
+            <Button fx:id="btnAnalytics" text="Analytics"
+                    maxWidth="Infinity" prefHeight="50.0"
+                    onAction="#onAnalytics"
+                    style="-fx-background-color:transparent; -fx-border-color:#d18bb9; -fx-border-radius:10; -fx-text-fill:#d18bb9; -fx-cursor:hand;">
+                <font><Font name="System Bold" size="13.0"/></font>
+                <cursor><Cursor fx:constant="HAND"/></cursor>
+            </Button>
+
+            <VBox VBox.vgrow="ALWAYS"/>
+
+            <Button text="&#8592; Back"
+                    maxWidth="Infinity" prefHeight="35.0"
+                    onAction="#onBack"
+                    style="-fx-background-color:#a84242; -fx-background-radius:10; -fx-text-fill:white; -fx-cursor:hand;">
+                <font><Font name="System Bold" size="13.0"/></font>
+                <cursor><Cursor fx:constant="HAND"/></cursor>
+            </Button>
+        </VBox>
+    </left>
+
+    <center>
+        <ScrollPane fitToWidth="true"
+                    style="-fx-background:transparent; -fx-background-color:transparent;">
+            <content>
+                <StackPane style="-fx-padding:20 24;">
+
+                    <!-- OVERVIEW TAB -->
+                    <VBox fx:id="tabOverview" spacing="16" visible="true" managed="true">
+
+                        <VBox spacing="6"
+                              style="-fx-background-color:#1e3a56; -fx-background-radius:12;
+                                     -fx-border-color:#d18bb9; -fx-border-radius:12;
+                                     -fx-border-width:1; -fx-padding:16;">
+                            <Label text="🎟  Total Tickets"
+                                   style="-fx-text-fill:#adcfef; -fx-font-size:12;"/>
+                            <Label fx:id="lblTotalTickets" text="0"
+                                   style="-fx-text-fill:#e3cdd8; -fx-font-size:28; -fx-font-weight:bold;"/>
+                        </VBox>
+
+                        <VBox spacing="6"
+                              style="-fx-background-color:#1e3a56; -fx-background-radius:12;
+                                     -fx-border-color:#d18bb9; -fx-border-radius:12;
+                                     -fx-border-width:1; -fx-padding:16;">
+                            <Label text="💰  Total Revenue"
+                                   style="-fx-text-fill:#adcfef; -fx-font-size:12;"/>
+                            <Label fx:id="lblTotalRevenue" text="EGP 0"
+                                   style="-fx-text-fill:#e3cdd8; -fx-font-size:28; -fx-font-weight:bold;"/>
+                        </VBox>
+
+                        <VBox spacing="6"
+                              style="-fx-background-color:#1e3a56; -fx-background-radius:12;
+                                     -fx-border-color:#d18bb9; -fx-border-radius:12;
+                                     -fx-border-width:1; -fx-padding:16;">
+                            <Label text="🏆  Top Movie"
+                                   style="-fx-text-fill:#adcfef; -fx-font-size:12;"/>
+                            <Label fx:id="lblTopMovie" text="-"
+                                   style="-fx-text-fill:#f2cde8; -fx-font-size:20; -fx-font-weight:bold;"
+                                   wrapText="true"/>
+                        </VBox>
+
+                        <Label text="Select a tab on the left to view detailed reports."
+                               style="-fx-text-fill:#adcfef; -fx-font-size:12;"/>
+                    </VBox>
+
+                    <VBox fx:id="tabPerMovie" visible="false" managed="false" spacing="14">
+                        <VBox spacing="8">
+                            <Label text="🎟  Tickets Sold per Movie"
+                                   style="-fx-text-fill:#adcfef; -fx-font-size:13; -fx-font-weight:bold;"/>
+                            <ListView fx:id="listSalesPerMovie" prefHeight="200"
+                                      style="-fx-background-color:#1e3a56;
+                                             -fx-control-inner-background:#1e3a56;
+                                             -fx-border-color:#d18bb9; -fx-border-radius:10;
+                                             -fx-background-radius:10; -fx-font-size:13;"/>
+                        </VBox>
+                        <VBox spacing="8">
+                            <Label text="💰  Revenue per Movie"
+                                   style="-fx-text-fill:#adcfef; -fx-font-size:13; -fx-font-weight:bold;"/>
+                            <ListView fx:id="listRevenuePerMovie" prefHeight="200"
+                                      style="-fx-background-color:#1e3a56;
+                                             -fx-control-inner-background:#1e3a56;
+                                             -fx-border-color:#d18bb9; -fx-border-radius:10;
+                                             -fx-background-radius:10; -fx-font-size:13;"/>
+                        </VBox>
+                    </VBox>
+
+                    <VBox fx:id="tabDaily" visible="false" managed="false" spacing="14">
+                        <HBox spacing="12" alignment="CENTER_LEFT">
+                            <Label text="📅  Date:"
+                                   style="-fx-text-fill:#adcfef; -fx-font-size:13; -fx-font-weight:bold;"/>
+                            <DatePicker fx:id="datePicker"
+                                        style="-fx-background-color:#1e3a56;
+                                               -fx-border-color:#d18bb9;
+                                               -fx-border-radius:8; -fx-background-radius:8;"/>
+                            <Button text="Calculate" onAction="#onCalculateDaily"
+                                    style="-fx-background-color:#d18bb9; -fx-text-fill:#1a304a;
+                                           -fx-font-weight:bold; -fx-background-radius:8;
+                                           -fx-padding:8 18; -fx-cursor:hand;">
+                                <cursor><Cursor fx:constant="HAND"/></cursor>
+                            </Button>
+                        </HBox>
+                        <TextArea fx:id="areaDaily" prefHeight="300" editable="false"
+                                  style="-fx-control-inner-background:#1e3a56;
+                                         -fx-text-fill:#e3cdd8; -fx-font-family:'Courier New';
+                                         -fx-font-size:13; -fx-border-color:#d18bb9;
+                                         -fx-border-radius:10; -fx-background-radius:10;"/>
+                    </VBox>
+
+                    <VBox fx:id="tabPrice" visible="false" managed="false" spacing="14">
+                        <Label text="💳  Current Ticket Prices"
+                               style="-fx-text-fill:#adcfef; -fx-font-size:13; -fx-font-weight:bold;"/>
+                        <ListView fx:id="listPrices" prefHeight="160"
+                                  style="-fx-background-color:#1e3a56;
+                                         -fx-control-inner-background:#1e3a56;
+                                         -fx-border-color:#d18bb9; -fx-border-radius:10;
+                                         -fx-background-radius:10; -fx-font-size:13;"/>
+                        <Label text="✏️  Update Ticket Price"
+                               style="-fx-text-fill:#adcfef; -fx-font-size:13; -fx-font-weight:bold;"/>
+                        <VBox spacing="10">
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <Label text="Movie:" minWidth="80.0"
+                                       style="-fx-text-fill:#e3cdd8; -fx-font-size:13;"/>
+                                <ComboBox fx:id="comboMovie" maxWidth="Infinity" HBox.hgrow="ALWAYS"
+                                          style="-fx-background-color:#1e3a56; -fx-border-color:#d18bb9;
+                                                 -fx-border-radius:8; -fx-background-radius:8;"/>
+                            </HBox>
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <Label text="Price (EGP):" minWidth="80.0"
+                                       style="-fx-text-fill:#e3cdd8; -fx-font-size:13;"/>
+                                <TextField fx:id="fieldPrice" maxWidth="Infinity" HBox.hgrow="ALWAYS"
+                                           promptText="e.g. 130"
+                                           style="-fx-background-color:#1e3a56; -fx-text-fill:#e3cdd8;
+                                                  -fx-border-color:#d18bb9;
+                                                  -fx-border-radius:8; -fx-background-radius:8; -fx-font-size:13;"/>
+                            </HBox>
+                            <Button text="Update" maxWidth="Infinity" onAction="#onUpdatePrice"
+                                    style="-fx-background-color:#d18bb9; -fx-text-fill:#1a304a;
+                                           -fx-font-weight:bold; -fx-background-radius:8;
+                                           -fx-padding:10 0; -fx-cursor:hand;">
+                                <cursor><Cursor fx:constant="HAND"/></cursor>
+                            </Button>
+                        </VBox>
+                        <Label fx:id="lblPriceResult" text=""
+                               style="-fx-text-fill:#f2cde8; -fx-font-size:13;"/>
+                    </VBox>
+
+                    <VBox fx:id="tabAnalytics" visible="false" managed="false" spacing="16">
+                        <Label text="📊  Data Analytics"
+                               style="-fx-text-fill:#adcfef; -fx-font-size:13; -fx-font-weight:bold;"/>
+
+                        <VBox spacing="8"
+                              style="-fx-background-color:#1e3a56; -fx-background-radius:12;
+                                     -fx-border-color:#d18bb9; -fx-border-radius:12;
+                                     -fx-border-width:1; -fx-padding:14;">
+                            <Label text="🎬  Sales per Movie"
+                                   style="-fx-text-fill:#adcfef; -fx-font-size:12; -fx-font-weight:bold;"/>
+                            <PieChart fx:id="pieChart" prefHeight="200"
+                                      legendVisible="true" labelsVisible="true"
+                                      style="-fx-background-color:transparent;"/>
+                        </VBox>
+
+                        <VBox spacing="8"
+                              style="-fx-background-color:#1e3a56; -fx-background-radius:12;
+                                     -fx-border-color:#d18bb9; -fx-border-radius:12;
+                                     -fx-border-width:1; -fx-padding:14;">
+                            <Label text="💰  Revenue (Last 7 Days)"
+                                   style="-fx-text-fill:#adcfef; -fx-font-size:12; -fx-font-weight:bold;"/>
+                            <LineChart fx:id="barChart" prefHeight="300"
+                                       animated="true" createSymbols="true"
+                                       style="-fx-background-color:transparent;">
+                                <xAxis>
+                                    <CategoryAxis label="Date"
+                                                  style="-fx-tick-label-fill:#adcfef; -fx-text-fill:#adcfef;"
+                                                  tickLabelRotation="30"/>
+                                </xAxis>
+                                <yAxis>
+                                    <NumberAxis label="EGP"
+                                                style="-fx-tick-label-fill:#adcfef; -fx-text-fill:#adcfef;"/>
+                                </yAxis>
+                            </LineChart>
+                        </VBox>
+
+                    </VBox>
+
+                </StackPane>
+            </content>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

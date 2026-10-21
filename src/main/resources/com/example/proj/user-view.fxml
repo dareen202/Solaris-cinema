@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="800.0" prefWidth="600.0" style="-fx-background-color: #0d1b2a;"  xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proj.UserController">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" prefHeight="70.0" spacing="20.0" style="-fx-background-color: #1a304a; -fx-border-color: #d18bb9; -fx-border-width: 0 0 2 0;" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+            </padding>
+            <children>
+                <Label text="Solaris Cinema" textFill="#f2cde8">
+                    <font><Font name="Bell MT Bold" size="24.0" /></font>
+                </Label>
+                <HBox alignment="CENTER_RIGHT" spacing="15.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Button onAction="#showMoviesView" style="-fx-background-color: transparent; -fx-text-fill: #e3cdd8;" text="Movies" font="$x1">
+                            <font><Font fx:id="x1" name="System Bold" size="14.0" /></font>
+                            <cursor><Cursor fx:constant="HAND" /></cursor>
+                        </Button>
+                        <Button onAction="#showProfileView" style="-fx-background-color: transparent; -fx-text-fill: #e3cdd8;" text="Profile" font="$x1">
+                            <cursor><Cursor fx:constant="HAND" /></cursor>
+                        </Button>
+                        <Button onAction="#handleLogout" style="-fx-background-color: #a84242; -fx-background-radius: 10;" text="Logout" textFill="WHITE">
+                            <font><Font name="System Bold" size="12.0" /></font>
+                            <cursor><Cursor fx:constant="HAND" /></cursor>
+                        </Button>
+                    </children>
+                </HBox>
+            </children>
+        </HBox>
+    </top>
+
+    <center>
+        <StackPane BorderPane.alignment="CENTER">
+            <children>
+                <!-- Movies Section -->
+                <ScrollPane fx:id="moviesScrollPane" fitToWidth="true" style="-fx-background-color: transparent; -fx-background: #0d1b2a;">
+                    <content>
+                        <FlowPane fx:id="moviesFlowPane" alignment="TOP_CENTER" hgap="20.0" vgap="20.0">
+                            <padding><Insets bottom="20.0" left="20.0" right="20.0" top="20.0" /></padding>
+                        </FlowPane>
+                    </content>
+                </ScrollPane>
+
+                <!-- Profile Section -->
+                <VBox fx:id="profileVBox" alignment="CENTER" spacing="20.0" style="-fx-background-color: #0d1b2a;" visible="false">
+                    <children>
+                        <VBox alignment="CENTER" maxWidth="500.0" spacing="15.0" style="-fx-background-color: #1a304a; -fx-background-radius: 20; -fx-border-color: rgba(211,140,185,0.3); -fx-border-radius: 20; -fx-border-width: 2;">
+                            <padding><Insets bottom="30.0" left="30.0" right="30.0" top="30.0" /></padding>
+                            <children>
+                                <Label text="PROFILE" textFill="#d18bb9">
+                                    <font><Font name="System Bold" size="24.0" /></font>
+                                </Label>
+                                <HBox alignment="CENTER" spacing="10.0">
+                                    <Label text="User:" textFill="#6c757d" />
+                                    <Label fx:id="profileUsernameLabel" textFill="WHITE" font="$x1" />
+                                    <Label text="Role:" textFill="#6c757d" />
+                                    <Label fx:id="profileRoleLabel" textFill="WHITE" font="$x1" />
+                                </HBox>
+
+                                <Label text="BOOKINGS" textFill="#d18bb9">
+                                    <font><Font name="System Bold" size="16.0" /></font>
+                                    <VBox.margin><Insets top="15.0" /></VBox.margin>
+                                </Label>
+
+                                <ScrollPane fitToWidth="true" minHeight="300.0" style="-fx-background-color: transparent; -fx-background: transparent;">
+                                    <content>
+                                        <VBox fx:id="bookingsContainer" spacing="10.0">
+                                            <padding><Insets bottom="5.0" left="5.0" right="5.0" top="5.0" /></padding>
+                                        </VBox>
+                                    </content>
+                                </ScrollPane>
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+            </children>
+        </StackPane>
+    </center>
+</BorderPane>
